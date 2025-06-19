@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script>
+		var picture=new Array("i1.jpg","i2.jpg","i3.jpg","i4.jpg");
+		var count=0;
+		var x;
+		var a=0;
+		function increase()
+		{
+			count++
+			if(count>=picture.length)
+			{
+				count=0;
+			}
+			document.getElementById("pic1").src=picture[count]
+		}
+		function decrease()
+		{
+			count-- 
+			if(count<0)
+			{
+				count=picture.length-1;
+			}
+			document.getElementById("pic1").src=picture[count]
+		}
+		function play_auto()
+		{
+			if(a==0)
+			{
+				x=setInterval("increase()",1000);
+				document.getElementById("play").src="pause.jpg";
+				a=1;
+			}
+			else
+			{
+				document.getElementById("play").src="play.jpg";
+				clearInterval(x)
+				a=0;
+			}
+			
+		}
+	</script>
+</head>
+<body bgcolor="black">
+<h1 id="txt">Image Slider</h1>
+	<div id="cont">
+		<img src="i1.jpg" id="pic1">
+	</div>
+	<div id="box1"><img src="less.jpg" id="less" onclick="decrease()"></div>
+	<div id="box2"><img src="greater.jpg" id="greater" onclick="increase()"></div>
+	<div id="box3"><img src="play.jpg" id="play" onclick="play_auto()"></div>
+</body>
+</html>
